@@ -29,25 +29,25 @@ jobs:
       with:
         python-version: "3.10.7"
 
-    - name: Install poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        export PATH=$HOME/.local/bin:$PATH
+    # - name: Install poetry
+    #   run: |
+    #     curl -sSL https://install.python-poetry.org | python3 -
+    #     export PATH=$HOME/.local/bin:$PATH
 
-    # - name: Install Poetry
-    #   uses: snok/install-poetry@v1
-    #   with:
-    #       virtualenvs-in-project: true
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+          virtualenvs-in-project: true
 
-    # - name: Load cached venv
-    #   id: cached-poetry-dependencies
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: .venv
-    #     key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
     - name: Install dependencies
-      # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry run make install
 
     - name: Lint with flake8
