@@ -21,9 +21,7 @@ jobs:
     - name: Checkout Repository
       # uses: actions/checkout@v4
       run: |
-        git clone https://github.com/5x12/course-app.git app
-        cd app
-        git checkout main
+        git clone https://github.com/5x12/course-app.git .
 
 
     - name: Set up Python 3.10.7
