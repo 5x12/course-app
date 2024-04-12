@@ -7,7 +7,7 @@ ORM capabilities to map Python classes to database tables.
 The structure and fields of the RentApartments class are configured
 to match the corresponding database for rental apartments.
 """
- 
+
 from sqlalchemy import INTEGER, REAL, VARCHAR
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
