@@ -20,7 +20,6 @@ class Base(DeclarativeBase):
     pass  # noqa: WPS420, WPS604
 
 
-
 class RentApartments(Base):
     """
     SQLAlchemy model class for rental apartments.
